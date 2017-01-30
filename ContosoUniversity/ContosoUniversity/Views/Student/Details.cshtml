@@ -11,6 +11,11 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @*A lambda expression is passed here as a parameter, thus
+                the word 'model' could be replaced by 'banana' or 'goiaba' as well.
+
+                IMPORTANT: the model used by DisplayFor() is defined in the
+                @model at the top of the page.*@
             @Html.DisplayNameFor(model => model.LastName)
         </dt>
 
@@ -34,6 +39,30 @@
             @Html.DisplayFor(model => model.EnrollmentDate)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Enrollments)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Course Title</th>
+                    <th>Grade</th>
+                </tr>
+                @*The elements @Html and @Model come from the WebViewPage class that is behind the views
+                  and are set through generics passing the Entity type on the top of this page*@
+                @foreach (var item in Model.Enrollments)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Course.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Grade)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
     </dl>
 </div>
 <p>
