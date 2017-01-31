@@ -81,3 +81,4 @@ C:\Users\Filipe\Documents\GitHub\contoso\ContosoUniversity\ContosoUniversity\bin
 C:\Users\Filipe\Documents\GitHub\contoso\ContosoUniversity\ContosoUniversity\bin\Newtonsoft.Json.xml
 C:\Users\Filipe\Documents\GitHub\contoso\ContosoUniversity\ContosoUniversity\obj\Debug\ContosoUniversity.dll
 C:\Users\Filipe\Documents\GitHub\contoso\ContosoUniversity\ContosoUniversity\obj\Debug\ContosoUniversity.pdb
+C:\Users\filipe\Documents\GitHub\contoso\ContosoUniversity\ContosoUniversity\obj\Debug\ContosoUniversity.csprojResolveAssemblyReference.cache
