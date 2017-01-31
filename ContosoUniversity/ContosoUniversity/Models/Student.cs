@@ -9,8 +9,8 @@ namespace ContosoUniversity.Models
         public int ID { get; set; }
         public string LastName { get; set; }
 
-        //[Required]
-        [Required(ErrorMessage = "Oh my gosh! Please enter the student's first name.")]
+        [Required]
+        //[Required(ErrorMessage = "Oh my gosh! Please enter the student's first name.")]
         [StringLength(50)]
         //[StringLength(50, ErrorMessage = "The first name must be less than 50 characters")]
         [Display(Name ="First Name:")]
