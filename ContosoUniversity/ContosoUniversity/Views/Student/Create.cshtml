@@ -14,7 +14,10 @@
     <div class="form-horizontal">
         <h4>Student</h4>
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @*About the first parameter of ValidationSummary (excludePropertyErrors) 
+          when true hides the error messages from properties and shows on the bullet list only
+          the others.*@
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">

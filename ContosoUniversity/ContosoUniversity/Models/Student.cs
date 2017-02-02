@@ -19,7 +19,8 @@ namespace ContosoUniversity.Models
         //ModelState consider valid yyyy-mm-dd, is it possible to change it?
         //this annotation adds a datepicker to the html field of this property
         [DataType(DataType.Date)]
-        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
+        //in order to overwrite this strange format in the views create a custom display template
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         //[Display(Name = "Enrollment Date:")]
         public DateTime EnrollmentDate { get; set; }
         public string EmailAddress { get; set; }
