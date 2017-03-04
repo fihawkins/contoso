@@ -114,11 +114,16 @@ namespace ContosoUniversity.Controllers
         }
 
         // GET: Student/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            if(saveChangesError.GetValueOrDefault())
+            {
+                ViewBag.ErrorMessage = "Delete failed. Try again, and if "+
+                    "the problem persists see your system administrator.";
             }
             Student student = db.Students.Find(id);
             if (student == null)
@@ -129,13 +134,34 @@ namespace ContosoUniversity.Controllers
         }
 
         // POST: Student/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult Delete(int id)
         {
-            Student student = db.Students.Find(id);
-            db.Students.Remove(student);
-            db.SaveChanges();
+            try
+            {
+                Student student = db.Students.Find(id);
+                db.Students.Remove(student);
+
+                //This code instantiates a Student entity using only the
+                //primary key value and then sets the entity state to 
+                //Deleted.That's all that the Entity Framework needs in 
+                //order to delete the entity.
+
+                //Student studentToDelete = new Student() { ID = id };
+                //db.Entry(studentToDelete).State = EntityState.Deleted;
+
+                db.SaveChanges();
+            }
+            catch (DataException/* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                return RedirectToAction("Delete", new
+                {
+                    id = id,
+                    saveChangesError = true
+                });
+            }
             return RedirectToAction("Index");
         }
 
