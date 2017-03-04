@@ -13,7 +13,7 @@ namespace ContosoUniversity.Models
         //[Required(ErrorMessage = "Oh my gosh! Please enter the student's first name.")]
         [StringLength(50)]
         //[StringLength(50, ErrorMessage = "The first name must be less than 50 characters")]
-        [Display(Name ="First Name:")]
+        [Display(Name ="First Name")]
         public string FirstMidName { get; set; }
 
         //ModelState consider valid yyyy-mm-dd, is it possible to change it?
